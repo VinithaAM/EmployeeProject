@@ -11,7 +11,7 @@ namespace EmployeeProject.Web.Controllers
     {
         private readonly IUserServices _userService = userService;
         readonly Response response = new();
-        [HttpGet(Name = "GetUser")]
+        [HttpGet("GetUsers")]
         public Response GetUsers()
         {
            
@@ -31,7 +31,7 @@ namespace EmployeeProject.Web.Controllers
                 return response;
             }
         }
-        [HttpGet("{id}", Name ="GetUserById")]
+        [HttpGet("GetUserById")]
         public Response GetUserById(int id)
         {
          
@@ -52,7 +52,7 @@ namespace EmployeeProject.Web.Controllers
             }
           
         }
-        [HttpPost(Name = "Create")]
+        [HttpPost("Create")]
         public Response Create(User user)
         {
             try
@@ -72,7 +72,7 @@ namespace EmployeeProject.Web.Controllers
             }
       
         }
-        [HttpPut(Name = "Update")]
+        [HttpPut("Update")]
         public Response Update(User user)
         {
             try
@@ -92,7 +92,7 @@ namespace EmployeeProject.Web.Controllers
             }
            
         }
-        [HttpDelete(Name = "Delete")]
+        [HttpDelete("Delete")]
         public Response Delete(int id)
         {
             try
