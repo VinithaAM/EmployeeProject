@@ -22,7 +22,14 @@ builder.Services.AddSwaggerGen();
 //Add Services
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserServices, UserServices>();
-
+builder.Services.AddCors(options =>
+options.AddPolicy(name: "AllowOrigin",
+policy =>
+{
+policy.AllowAnyOrigin()
+.AllowAnyHeader()
+.AllowAnyMethod();
+}));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowOrigin");
+
 
 app.UseAuthorization();
 
